@@ -1,6 +1,6 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { Button } from "flowbite-react";
+import GameCard from "~/components/GameCard";
 
 export const meta: MetaFunction = () => {
   return [
@@ -25,7 +25,7 @@ export async function loader() {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json",
     },
-    body: "fields *; limit 10;",
+    body: "fields name, summary, cover.*; limit 20;",
   });
 
   if (!response.ok) {
@@ -47,20 +47,16 @@ export default function Index() {
     return <div>Error: {data.error}</div>;
   }
 
-  console.log(data);
-
   return (
     <div className="font-sans p-4">
-      <h1>Game Library</h1>
-      <ul>
+      <h1 className="text-4xl font-bold tracking-tight text-gray-900 text-center mb-3 py-3">
+        Game Library
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
         {data.map((game: any) => (
-          <li key={game.id}>
-            <h2>{game.name}</h2>
-            {game.cover && <img src={game.cover}></img>}
-          </li>
+          <GameCard key={game.id} game={game} />
         ))}
-      </ul>
-      <Button>Click me</Button>
+      </div>
     </div>
   );
 }

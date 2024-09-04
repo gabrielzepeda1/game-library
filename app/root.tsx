@@ -5,7 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./tailwind.css?url";
+import "./tailwind.css";
 import { ThemeModeScript } from "flowbite-react";
 
 export function Layout({ children }: { children: React.ReactNode }) {
