@@ -1,4 +1,5 @@
-import type { MetaFunction } from "@remix-run/node";
+import { json, type MetaFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,41 +8,56 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+//Fetch games from IGDB API
+export async function loader() {
+  const clientId = process.env.TWITCH_CLIENT_ID;
+  const accessToken = process.env.TWITCH_ACCESS_TOKEN;
+
+  if (!clientId || !accessToken) {
+    return json({ error: "Missing API credentials." }, { status: 500 });
+  }
+
+  const response = await fetch("https://api.igdb.com/v4/games", {
+    method: "POST",
+    headers: {
+      "Client-ID": clientId,
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: "fields *; limit 10;",
+  });
+
+  if (!response.ok) {
+    return json(
+      { error: "Failed to fetch data from IGDB." },
+      { status: response.status }
+    );
+  }
+
+  const data = await response.json();
+
+  return json(data);
+}
+
 export default function Index() {
+  const data = useLoaderData<typeof loader>();
+
+  if (data.error) {
+    return <div>Error: {data.error}</div>;
+  }
+
+  console.log(data);
+
   return (
     <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
+      <h1>Game Library</h1>
+      <ul>
+        {data.map((game: any) => (
+          <li key={game.id}>
+            <h2>{game.name}</h2>
+            {game.cover && <img src={game.cover}></img>}
+          </li>
+        ))}
       </ul>
     </div>
   );
