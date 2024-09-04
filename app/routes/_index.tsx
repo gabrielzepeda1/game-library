@@ -1,5 +1,6 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { Button } from "flowbite-react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -59,6 +60,7 @@ export default function Index() {
           </li>
         ))}
       </ul>
+      <Button>Click me</Button>
     </div>
   );
 }

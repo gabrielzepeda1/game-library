@@ -5,7 +5,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./tailwind.css";
+import "./tailwind.css?url";
+import { ThemeModeScript } from "flowbite-react";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <ThemeModeScript />
       </head>
       <body>
         {children}
