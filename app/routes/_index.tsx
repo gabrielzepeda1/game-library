@@ -49,7 +49,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const data = await response.json();
 
-  return json(data);
+  return json({ data, searchTerm });
 }
 
 export async function action({ request }: ActionFunctionArgs) {
@@ -59,7 +59,10 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Index() {
-  const data = useLoaderData<typeof loader>();
+  const { data, searchTerm } = useLoaderData<typeof loader>() as {
+    data: any;
+    searchTerm: string;
+  };
 
   if (data.error) {
     return <div>Error: {data.error}</div>;
@@ -123,6 +126,9 @@ export default function Index() {
               </button>
             </div>
           </Form>
+          <p className="text-xl text-gray-900 dark:text-gray-200">
+            Showing results for... <span>{searchTerm}</span>
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-5">
           {data.map((game: any) => (
