@@ -1,5 +1,6 @@
 import { json, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { DarkThemeToggle, Flowbite } from "flowbite-react";
 import GameCard from "~/components/GameCard";
 
 export const meta: MetaFunction = () => {
@@ -48,15 +49,27 @@ export default function Index() {
   }
 
   return (
-    <div className="font-sans p-4">
-      <h1 className="text-4xl font-bold tracking-tight text-gray-900 text-center mb-3 py-3">
-        Game Library
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-        {data.map((game: any) => (
-          <GameCard key={game.id} game={game} />
-        ))}
+    <Flowbite>
+      <div className="font-sans p-4 bg-white dark:bg-slate-900">
+        <div className="flex align-center justify-between mb-3 py-3">
+          <div className="flex-grow flex justify-center">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+              Game Library
+            </h1>
+          </div>
+          <div className="flex items-center ml-auto px-2 gap-1">
+            <p className="text-lg font-semibold tracking-normal text-gray-900 dark:text-white">
+              Dark Mode
+            </p>
+            <DarkThemeToggle />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-5">
+          {data.map((game: any) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+        </div>
       </div>
-    </div>
+    </Flowbite>
   );
 }
