@@ -1,6 +1,6 @@
 export default function GameCard({ game }: { game: any }) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition-transform duration-300 hover:scale-105">
       <a href="#">
         <img
           className="w-full h-[400px] rounded-t-lg"
@@ -8,13 +8,13 @@ export default function GameCard({ game }: { game: any }) {
           alt={game.name}
         />
       </a>
-      <div className="p-5">
+      <div className="h-[280px] p-5">
         <a href="#">
-          <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white truncate hover:text-wrap">
             {game.name}
           </h5>
         </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 truncate">
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 h-[125px] text-clip overflow-hidden">
           {game.summary}
         </p>
         <a
