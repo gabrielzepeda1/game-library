@@ -126,8 +126,9 @@ export default function Index() {
               </button>
             </div>
           </Form>
-          <p className="text-xl text-gray-900 dark:text-gray-200">
-            Showing results for... <span>{searchTerm}</span>
+          <p className="text-sm lg:text-lg text-gray-900 dark:text-gray-200 mt-1 ml-1">
+            Showing results for...{" "}
+            <span className="font-semibold">{searchTerm}</span>
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-5">

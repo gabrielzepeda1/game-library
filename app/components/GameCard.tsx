@@ -10,7 +10,7 @@ export default function GameCard({ game }: { game: any }) {
       </a>
       <div className="p-5">
         <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {game.name}
           </h5>
         </a>
