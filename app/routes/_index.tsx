@@ -126,10 +126,12 @@ export default function Index() {
               </button>
             </div>
           </Form>
-          <p className="text-sm lg:text-lg text-gray-900 dark:text-gray-200 mt-1 ml-1">
-            Showing results for...{" "}
-            <span className="font-semibold">{searchTerm}</span>
-          </p>
+          {searchTerm && (
+            <p className="text-sm lg:text-lg text-gray-900 dark:text-gray-200 mt-1 ml-1">
+              Showing results for...{" "}
+              <span className="font-semibold">{searchTerm}</span>
+            </p>
+          )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-6 space-y-3">
           {data.map((game: any) => (
