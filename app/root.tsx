@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import "./tailwind.css";
-import { ThemeModeScript } from "flowbite-react";
+import { DarkThemeToggle, Flowbite, ThemeModeScript } from "flowbite-react";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -28,5 +28,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <Flowbite>
+      <main className="font-sans p-4 bg-gray-100 dark:bg-slate-900 h-screen">
+        <div className="flex align-center justify-center mb-3 py-3">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+              Game Library
+            </h1>
+          </div>
+          <div className="flex items-center ml-auto px-2 gap-1">
+            <p className="text-lg font-semibold tracking-normal text-gray-900 dark:text-white">
+              Dark Mode
+            </p>
+            <DarkThemeToggle />
+          </div>
+        </div>
+        <Outlet />
+      </main>
+    </Flowbite>
+  );
 }
