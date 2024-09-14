@@ -7,6 +7,7 @@ import {
 import { Form, useLoaderData } from "@remix-run/react";
 import { DarkThemeToggle, Flowbite } from "flowbite-react";
 import GameCard from "~/components/GameCard";
+import { getGames } from "~/lib/api";
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,37 +18,14 @@ export const meta: MetaFunction = () => {
 
 //Fetch games from IGDB API
 export async function loader({ request }: LoaderFunctionArgs) {
-  const clientId = process.env.TWITCH_CLIENT_ID;
-  const accessToken = process.env.TWITCH_ACCESS_TOKEN;
-
-  if (!clientId || !accessToken) {
-    return json({ error: "Missing API credentials." }, { status: 500 });
-  }
-
   const url = new URL(request.url);
   const searchTerm = url.searchParams.get("searchTerm");
+
   const query = searchTerm
     ? `search "${searchTerm}"; fields name, summary, cover.*; limit 20;`
     : "fields name, summary, cover.*; limit 500;";
 
-  const response = await fetch("https://api.igdb.com/v4/games", {
-    method: "POST",
-    headers: {
-      "Client-ID": clientId,
-      Authorization: `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
-    },
-    body: query,
-  });
-
-  if (!response.ok) {
-    return json(
-      { error: "Failed to fetch data from IGDB." },
-      { status: response.status }
-    );
-  }
-
-  const data = await response.json();
+  const data = await getGames(query);
 
   return json({ data, searchTerm });
 }
