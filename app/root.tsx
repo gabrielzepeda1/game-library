@@ -39,7 +39,7 @@ export default function App() {
           </div>
           <div className="flex items-center ml-auto px-2 gap-1">
             <p className="text-lg font-semibold tracking-normal text-gray-900 dark:text-white">
-              Dark Mode
+              <span className="hidden lg:inline">Dark Mode</span>
             </p>
             <DarkThemeToggle />
           </div>
