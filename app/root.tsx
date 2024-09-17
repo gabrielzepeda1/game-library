@@ -30,8 +30,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <Flowbite>
-      <main className="font-sans p-4 bg-gray-100 dark:bg-slate-900 h-screen">
-        <div className="flex align-center justify-center mb-3 py-3">
+      <main className="font-sans bg-gray-100 dark:bg-slate-900 h-screen">
+        <div className="flex align-center justify-center mb-3 p-7">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
               Game Library
