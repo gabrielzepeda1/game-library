@@ -10,7 +10,7 @@ import {
 export async function loader({ params }: LoaderFunctionArgs) {
   //This will return all of the data of a single game
   const gameId = params.id;
-  const query = `fields name, summary, genres, platforms.name, cover.image_id; where id= ${gameId};`;
+  const query = `fields name, summary, genres.name, release_dates.human, platforms.name, cover.image_id; where id= ${gameId};`;
   const data = await getGames(query);
 
   return json(data);
@@ -19,8 +19,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 export default function GameDetail() {
   const data = useLoaderData();
   const [game] = data;
-  console.log(game);
-  console.log(typeof game.platforms);
+  const releaseDate = game.release_dates[0].human;
 
   return (
     <div className="relative overflow-hidden bg-gray-100 dark:bg-slate-900 px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -41,6 +40,24 @@ export default function GameDetail() {
               </p>
               <ul className="text-base text-gray-700 dark:text-gray-300">
                 {game.platforms.map((i: any) => (
+                  <li key={i.id}>{i.name}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-4">
+              <p className="text-base font-semibold leading-7 text-indigo-600 dark:text-blue-500">
+                Release Date:{" "}
+              </p>
+              <span className="text-base text-gray-900 dark:text-gray-300">
+                {releaseDate}
+              </span>
+            </div>
+            <div className="mt-4">
+              <p className="text-base font-semibold leading-7 text-indigo-600 dark:text-blue-500">
+                Genres
+              </p>
+              <ul className="text-base text-gray-700 dark:text-gray-300">
+                {game.genres.map((i: any) => (
                   <li key={i.id}>{i.name}</li>
                 ))}
               </ul>
