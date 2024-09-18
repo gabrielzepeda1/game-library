@@ -97,7 +97,7 @@ export default function Index() {
           </p>
         )}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-6 space-y-3">
+      <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-6 space-y-3 lg:px-3">
         {data.map((game: any) => (
           <GameCard key={game.id} game={game} />
         ))}
