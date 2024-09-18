@@ -30,7 +30,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <Flowbite>
-      <main className="font-sans bg-gray-100 dark:bg-slate-900 h-screen">
+      <main className="font-sans bg-gray-100 dark:bg-slate-900">
         <div className="flex align-center justify-center mb-3 p-7">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
