@@ -30,7 +30,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
         <ThemeModeScript />
       </head>
-      <body>
+      <body className="bg-gray-100 dark:bg-slate-900">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -42,11 +42,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <Flowbite>
-      <main className="font-sans bg-gray-100 dark:bg-slate-900">
+      <main className="font-sans">
         <div className="flex align-center justify-center mb-3 p-7">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
-              Game Library
+              Game Finder
             </h1>
           </div>
           <div className="flex items-center ml-auto px-2 gap-1">

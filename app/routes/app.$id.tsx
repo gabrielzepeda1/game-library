@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs } from "@remix-run/node";
+import { LoaderFunctionArgs, type MetaFunction } from "@remix-run/node";
 import { json, Link, useLoaderData } from "@remix-run/react";
 import { getGames } from "~/lib/api";
 import {
@@ -6,6 +6,13 @@ import {
   LockClosedIcon,
   ServerIcon,
 } from "@heroicons/react/20/solid";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Game Library" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
 
 export async function loader({ params }: LoaderFunctionArgs) {
   //This will return all of the data of a single game
@@ -17,8 +24,9 @@ export async function loader({ params }: LoaderFunctionArgs) {
 }
 
 export default function GameDetail() {
-  const data = useLoaderData();
-  const [game] = data;
+  const data = useLoaderData<typeof loader>();
+  console.log(data);
+  const [game] = data as any[];
   const releaseDate = game.release_dates[0].human;
 
   return (
