@@ -5,8 +5,20 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./tailwind.css";
+import { LinksFunction } from "@remix-run/node";
 import { DarkThemeToggle, Flowbite, ThemeModeScript } from "flowbite-react";
+import fontStyleSheetUrl from "~/styles/font.css?url";
+import tailwindStyleSheetUrl from "~/styles/tailwind.css?url";
+
+export const links: LinksFunction = () => {
+  return [
+    { rel: "preload", href: fontStyleSheetUrl, as: "style" },
+    { rel: "preload", href: tailwindStyleSheetUrl, as: "style" },
+
+    { rel: "stylesheet", href: fontStyleSheetUrl },
+    { rel: "stylesheet", href: tailwindStyleSheetUrl },
+  ];
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

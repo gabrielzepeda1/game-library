@@ -1,5 +1,6 @@
-import flowbite from "flowbite-react/tailwind";
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
+import flowbite from "flowbite-react/tailwind";
 
 export default {
   content: [
@@ -7,7 +8,11 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   plugins: [flowbite.plugin()],
 } satisfies Config;
