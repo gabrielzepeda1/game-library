@@ -30,7 +30,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
         <ThemeModeScript />
       </head>
-      <body className="bg-gray-100 dark:bg-slate-900">
+      <body className="bg-gray-100 dark:bg-slate-900  bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
         {children}
         <ScrollRestoration />
         <Scripts />
