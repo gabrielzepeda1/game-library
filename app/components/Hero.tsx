@@ -19,13 +19,13 @@ export default function Hero() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </a>
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 className="mb-4 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
           Explore Thousands of Games at Your Fingertips
         </h1>
         <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
