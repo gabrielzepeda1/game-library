@@ -11,7 +11,7 @@ export default function Hero({ searchTerm }: { searchTerm?: string }) {
           Whether you're into action, adventure, RPGs, or indie gems, our game
           searcher helps you discover the best games quickly and easily.
         </p>
-        <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+        <div className="mb-8 px-2 justify-center">
           <SearchForm searchTerm={searchTerm} />
         </div>
       </div>
