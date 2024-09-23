@@ -29,7 +29,7 @@ export default function Index() {
     searchTerm: string;
   };
 
-  if (data.error) {
+  if (data.error || !data.length) {
     return <div>Error: {data.error}</div>;
   }
 
