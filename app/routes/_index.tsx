@@ -38,7 +38,7 @@ export default function Landing() {
     <>
       <Hero />
       <MainFeatures />
-      <Testimonials />
+      {/* <Testimonials /> */}
     </>
   );
 }
