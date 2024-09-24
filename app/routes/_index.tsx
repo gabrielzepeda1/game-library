@@ -24,16 +24,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return null;
 }
 
-// export async function action({ request }: ActionFunctionArgs) {
-//   const formData = await request.formData();
-//   const searchParam = formData.get("searchTerm");
-
-//   return json({ searchParam: searchParam });
-// }
-
 export default function Landing() {
-  // const actionData = useActionData<typeof action>();
-  // console.log(actionData);
   return (
     <>
       <Hero />

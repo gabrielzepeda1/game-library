@@ -1,16 +1,11 @@
-import { Form, useNavigation } from "@remix-run/react";
-import { Spinner } from "flowbite-react";
-import { useState } from "react";
+import { Form, useNavigation, useSearchParams } from "@remix-run/react";
 
 export default function SearchForm({ searchTerm }: { searchTerm?: string }) {
   const navigation = useNavigation();
-  const [isDisabled, setIsDisabled] = useState(false);
+  const isNavigating =
+    navigation.state === "loading" && navigation.location.search !== "";
   return (
-    <Form
-      method="get"
-      className="max-w-md mx-auto"
-      onSubmit={() => setIsDisabled(true)}
-    >
+    <Form method="get" className="max-w-md mx-auto">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -46,10 +41,10 @@ export default function SearchForm({ searchTerm }: { searchTerm?: string }) {
         />
         <button
           type="submit"
-          disabled={isDisabled}
+          disabled={isNavigating}
           className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 disabled:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:disabled:bg-blue-500 cursor-not-allowed "
         >
-          {isDisabled ? (
+          {isNavigating ? (
             <div className="flex">
               <div role="status">
                 <svg
@@ -70,7 +65,7 @@ export default function SearchForm({ searchTerm }: { searchTerm?: string }) {
                 </svg>
                 <span className="sr-only">Loading...</span>
               </div>
-              <span className="pl-2.5">Searching...</span>
+              <span className="pl-2.5">Loading...</span>
             </div>
           ) : (
             <span>Search</span>

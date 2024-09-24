@@ -15,12 +15,15 @@ export const meta: MetaFunction = () => {
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
   const searchTerm = url.searchParams.get("searchTerm");
-  if (searchTerm) {
-    const query = `search "${searchTerm}"; fields name, summary, cover.*; limit 20;`;
-    const data = await getGames(query);
+
+  if (!searchTerm) return json({ data: [], searchTerm: null });
+
+  const query = `search "${searchTerm}"; fields name, summary, cover.*; limit 20;`;
+  const data = await getGames(query);
+
+  if (data) {
     return json({ data: data, searchTerm: searchTerm });
   }
-  return json({ data: [], searchTerm: null });
 }
 
 export default function Index() {
@@ -28,10 +31,6 @@ export default function Index() {
     data: any;
     searchTerm: string;
   };
-
-  if (data.error || !data.length) {
-    return <div>Error: {data.error}</div>;
-  }
 
   return (
     <>
@@ -45,7 +44,7 @@ export default function Index() {
         )}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-6 space-y-3 lg:px-3">
-        {searchTerm !== null ? (
+        {data.length && searchTerm !== null ? (
           data.map((game: any) => <GameCard key={game.id} game={game} />)
         ) : (
           <span className="text-xl text-gray-900 dark:text-white">
