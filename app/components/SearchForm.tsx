@@ -42,7 +42,7 @@ export default function SearchForm({ searchTerm }: { searchTerm?: string }) {
         <button
           type="submit"
           disabled={isNavigating}
-          className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 disabled:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:disabled:bg-blue-500 cursor-not-allowed "
+          className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 disabled:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:disabled:bg-blue-500 disabled:cursor-not-allowed"
         >
           {isNavigating ? (
             <div className="flex">
