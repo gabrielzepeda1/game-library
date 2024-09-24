@@ -46,7 +46,7 @@ export default function App() {
       <main className="font-sans">
         <div className="flex align-center justify-center mb-3 p-7">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center transform transition-transform duration-300 hover:scale-110">
               <Link to="/" about="To Home Page">
                 Playdex
               </Link>

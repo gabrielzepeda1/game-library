@@ -34,7 +34,7 @@ export default function Index() {
 
   return (
     <>
-      <div className="mb-3 py-3">
+      <div className="mb-3 p-4">
         <SearchForm searchTerm={searchTerm} />
         {searchTerm && (
           <p className="text-sm lg:text-lg text-gray-900 dark:text-gray-200 mt-1 ml-1">
@@ -43,7 +43,7 @@ export default function Index() {
           </p>
         )}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-6 space-y-3 lg:px-3">
+      <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 gap-x-6 gap-y-10 p-6 lg:p-4">
         {data.length && searchTerm !== null ? (
           data.map((game: any) => <GameCard key={game.id} game={game} />)
         ) : (
