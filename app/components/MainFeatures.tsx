@@ -11,7 +11,7 @@ export default function Features() {
   return (
     <section className="pt-8 pb-16 text-gray-900 dark:text-gray-200">
       <div className="mx-auto max-w-4xl px-4 text-center">
-        <h3 className="mb-10 text-3xl font-bold">Why use Game Finder?</h3>
+        <h3 className="mb-10 text-3xl font-bold">Why use PlayDex?</h3>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {[
             {
@@ -41,7 +41,7 @@ export default function Features() {
           ].map((benefit, index) => (
             <div
               key={index}
-              className="rounded-lg p-6 h-[168px] bg-[#1c2536] hover:bg-[#2a3649] transition-colors"
+              className="rounded-lg p-6 h-[168px] bg-blue-700 hover:bg-blue-800 text-white dark:bg-[#1c2536] dark:hover:bg-[#2a3649] transition-colors"
               // whileHover={{ scale: 1.05 }}
               // initial={{ opacity: 0, y: 20 }}
               // animate={{ opacity: 1, y: 0 }}
