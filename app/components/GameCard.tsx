@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 
 export default function GameCard({ game }: { game: any }) {
   return (
-    <div className="max-w-md bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition-transform duration-300 hover:scale-105">
+    <div className="max-w-md h-[700px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition-transform duration-300 hover:scale-105">
       <a href="#">
         <img
           className="w-full h-[400px] rounded-t-lg"

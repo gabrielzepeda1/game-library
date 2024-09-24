@@ -1,4 +1,5 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
@@ -45,8 +46,10 @@ export default function App() {
       <main className="font-sans">
         <div className="flex align-center justify-center mb-3 p-7">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
-              Game Finder
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white text-center transform transition-transform duration-300 hover:scale-110">
+              <Link to="/" about="To Home Page">
+                Playdex
+              </Link>
             </h1>
           </div>
           <div className="flex items-center ml-auto px-2 gap-1">
