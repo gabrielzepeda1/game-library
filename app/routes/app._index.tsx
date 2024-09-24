@@ -2,6 +2,7 @@ import { json, LoaderFunctionArgs, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import GameCard from "~/components/GameCard";
 import SearchForm from "~/components/SearchForm";
+
 import { getGames } from "~/lib/api";
 
 export const meta: MetaFunction = () => {
@@ -24,6 +25,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   if (data) {
     return json({ data: data, searchTerm: searchTerm });
   }
+ 
 }
 
 export default function Index() {
